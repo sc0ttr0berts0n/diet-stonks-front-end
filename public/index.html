@@ -18,8 +18,8 @@
         <div class="app--wrapper" :class="{ 'app__loading': !apiResponse }">
             <div class="app--loading" v-if="!apiResponse">Loading...<br />This may take up to two minutes.</div>
             <div class="table--container" v-if="stocks">
-                <div class="comments--title">Diet Stonks as of {{cosmeticTime}}</div>
-                <div class="table--wrapper">
+                <div class="comments--title" v-if="apiResponse">Diet Stonks as of {{cosmeticTime}}</div>
+                <div class="table--wrapper" v-if="apiResponse">
                     <div class="table--listing">
                         <div class="table--row table--row__header">
                             <div class="table--data table--data__pos">POS</div>
@@ -56,7 +56,10 @@
                         <div class="comments--title">Comments for {{activeStock}} ({{comments.length}})</div>
                     </div>
                     <div class="comments--body">
-                        <div class="comments--entry" v-for="comment in comments">{{comment.comment}}</div>
+                        <div class="comments--entry" v-for="comment in comments">
+                            <div class="comments--post-title">From: <a :href="comment.permalink" class="comments--permalink" target="_blank">{{comment.postTitle}}</a></div>
+                            <div class="comments--comment">{{comment.comment}}</div>
+                        </div>
                     </div>
                 </div>
             </div>

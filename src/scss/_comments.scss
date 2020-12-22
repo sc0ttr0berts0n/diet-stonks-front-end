@@ -10,4 +10,21 @@
         border-radius: $radius;
         background-color: rgba(0, 0, 0, 0.1);
     }
+    &--post-title {
+        opacity: 0.4;
+        transition: $timing;
+        padding-bottom: 0.25rem;
+        font-size: 0.875rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        &:hover {
+            opacity: 1;
+        }
+    }
+    &--comment {
+        border-left: 4px solid rgba(#ccc, 0.2);
+        padding-left: 1rem;
+        line-height: 1.3;
+    }
 }
