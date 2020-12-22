@@ -33,7 +33,7 @@
                     </div>
                     <div class="table--listing" v-for="(stock, index) in stocks" :class="{ 'table--listing__active': stock.isActive }" :data-name="`${stock.name}`">
                         <div class="table--row" @click="handleStockClick(stock)">
-                            <div class="table--data table--data__pos">{{index}}</div>
+                            <div class="table--data table--data__pos">{{index + 1}}</div>
                             <div class="table--data table--data__sym">{{stock.symbol}}</div>
                             <div class="table--data table--data__ocr">{{stock.occurances}}</div>
                             <div class="table--data table--data__snt">{{stock.sentiment}}</div>
