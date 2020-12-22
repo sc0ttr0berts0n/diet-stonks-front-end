@@ -1,0 +1,107 @@
+.table {
+    &--wrapper {
+        width: 100%;
+        border: 1px solid #ff5050;
+        border-radius: 0 0 $radius $radius;
+    }
+    &--row {
+        display: flex;
+        cursor: pointer;
+        padding: 0.5rem 0;
+        &__header {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #282828;
+            background-color: #ff5050;
+        }
+    }
+    &--listing {
+        transition: $timing;
+        &:nth-child(odd) {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        &:hover {
+            background-color: rgba(#ff5050, 0.3);
+        }
+        &__active:nth-child(n) {
+            border: 1px solid #ff5050;
+            border-width: 1px 0;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        &__active::before {
+            content: attr(data-name);
+            display: block;
+            text-align: center;
+            background-color: #ff5050;
+            color: #282828;
+            font-weight: bold;
+        }
+    }
+    &--data {
+        text-align: center;
+        padding: 0 1rem;
+        flex-grow: 1;
+        flex-basis: calc(100% / 7);
+        border-right: 1px solid rgba(#ff5050, 0.2);
+        &:last-child {
+            border: 0;
+        }
+        .table--listing__active & {
+            &::before {
+                display: block;
+                font-size: 0.75rem;
+                letter-spacing: 0.0625rem;
+                line-height: 1;
+                font-weight: bold;
+                color: rgba(white, 0.4);
+            }
+            &__pos::before {
+                content: 'POS';
+            }
+            &__sym::before {
+                content: 'SYM';
+            }
+            &__ocr::before {
+                content: 'OCR';
+            }
+            &__snt::before {
+                content: 'SNT';
+            }
+            &__idx::before {
+                content: 'IDX';
+            }
+            &__cur::before {
+                content: 'CUR';
+            }
+            &__cng::before {
+                content: 'CNG';
+            }
+        }
+    }
+    &--body {
+        margin: 0.5rem 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        display: flex;
+        background-color: rgba(0, 0, 0, 0.2);
+        justify-content: space-evenly;
+    }
+    &--body-data {
+        text-align: center;
+        margin-right: 2rem;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    &--body-data-label {
+        display: block;
+        font-size: 0.75rem;
+        letter-spacing: 0.0625rem;
+        line-height: 1;
+        font-weight: bold;
+        color: rgba(white, 0.5);
+    }
+    &--body-data-value {
+        display: block;
+    }
+}

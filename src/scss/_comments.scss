@@ -1,0 +1,13 @@
+.comments {
+    &--title {
+        margin: 2rem 0 1rem;
+        font-size: 1.5rem;
+    }
+    &--entry {
+        font-size: 1.125rem;
+        margin: 0.5rem 0;
+        padding: 1rem;
+        border-radius: $radius;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}

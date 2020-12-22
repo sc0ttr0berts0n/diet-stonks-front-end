@@ -1,0 +1,6 @@
+node_modules
+.vscode/
+public/_css
+public/_js
+.DS_Store
+debug.log

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Diet Stonks</title>
+
+    <!-- common stuff for headers -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS and scripts -->
+    <link href='_css/style.css' rel="stylesheet" type='text/css' media="screen" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app" class="app--container">
+        <div class="app--wrapper" :class="{ 'app__loading': !apiResponse }">
+            <div class="app--loading" v-if="!apiResponse">Loading...<br />This may take up to two minutes.</div>
+            <div class="table--container" v-if="stocks">
+                <div class="comments--title">Diet Stonks as of {{cosmeticTime}}</div>
+                <div class="table--wrapper">
+                    <div class="table--listing">
+                        <div class="table--row table--row__header">
+                            <div class="table--data table--data__pos">POS</div>
+                            <div class="table--data table--data__sym">SYM</div>
+                            <div class="table--data table--data__ocr">OCR</div>
+                            <div class="table--data table--data__snt">SNT</div>
+                            <div class="table--data table--data__idx">IDX</div>
+                            <div class="table--data table--data__cur">CUR</div>
+                            <div class="table--data table--data__cng">CNG</div>
+                        </div>
+                    </div>
+                    <div class="table--listing" v-for="(stock, index) in stocks" :class="{ 'table--listing__active': stock.isActive }" :data-name="`${stock.name}`">
+                        <div class="table--row" @click="handleStockClick(stock)">
+                            <div class="table--data table--data__pos">{{index}}</div>
+                            <div class="table--data table--data__sym">{{stock.symbol}}</div>
+                            <div class="table--data table--data__ocr">{{stock.occurances}}</div>
+                            <div class="table--data table--data__snt">{{stock.sentiment}}</div>
+                            <div class="table--data table--data__idx">{{stock.index}}</div>
+                            <div class="table--data table--data__cur">{{stock.price.current.toFixed(2)}}</div>
+                            <div class="table--data table--data__cng">{{stock.price.changePercentage}}</div>
+                        </div>
+                        <div class="table--body" v-if="stock.isActive">
+                            <div class="table--body-data"><span class="table--body-data-label">OPEN</span> <span class="table--body-data-value">{{stock.price.open.toFixed(2)}}</span></div>
+                            <div class="table--body-data"><span class="table--body-data-label">CLOSE</span> <span class="table--body-data-value">{{stock.price.previousClose.toFixed(2)}}</span></div>
+                            <div class="table--body-data"><span class="table--body-data-label">HIGH</span> <span class="table--body-data-value">{{stock.price.high.toFixed(2)}}</span></div>
+                            <div class="table--body-data"><span class="table--body-data-label">LOW</span> <span class="table--body-data-value">{{stock.price.low.toFixed(2)}}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="comments--container" v-if="comments.length > 0">
+                <div class="comments--wrapper">
+                    <div class="comments--header">
+                        <div class="comments--title">Comments for {{activeStock}} ({{comments.length}})</div>
+                    </div>
+                    <div class="comments--body">
+                        <div class="comments--entry" v-for="comment in comments">{{comment.comment}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.core.min.js" integrity="sha512-adYefSF5Yqrk6IfUEa40OrIDc2Mgc2tErcS3DAU+WyZqlr/1Kr/FoKcHSNOP9hNHbOQjOgGxga4Yp/sK5w0ZmQ==" crossorigin="anonymous"></script>
+    <script src="_js/app.js" type="text/javascript"></script>
+</body>
+
+</html>
