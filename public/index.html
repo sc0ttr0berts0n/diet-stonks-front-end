@@ -39,7 +39,7 @@
                             <div class="table--data table--data__snt">{{stock.sentiment}}</div>
                             <div class="table--data table--data__idx">{{stock.index}}</div>
                             <div class="table--data table--data__cur">{{stock.price.current.toFixed(2)}}</div>
-                            <div class="table--data table--data__cng">{{stock.price.changePercentage}}</div>
+                            <div class="table--data table--data__cng">{{stock.price.changePercentage.toFixed(2)}}%</div>
                         </div>
                         <div class="table--body" v-if="stock.isActive">
                             <div class="table--body-data"><span class="table--body-data-label">OPEN</span> <span class="table--body-data-value">{{stock.price.open.toFixed(2)}}</span></div>
