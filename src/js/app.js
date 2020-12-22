@@ -45,6 +45,9 @@ var app = new Vue({
             this.activeStock = stock.symbol;
             this.comments = stock.comments;
         },
+        redOrGreen(num) {
+            return num > 0 ? 'green' : 'red';
+        },
     },
     computed: {
         cosmeticTime: function () {

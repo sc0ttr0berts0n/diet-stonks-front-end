@@ -7,3 +7,10 @@ body {
 a {
     color: #ff5050;
 }
+
+.green {
+    color: mix(#50ff50, #ccc, 70%);
+}
+.red {
+    color: mix(#ff5050, #ccc, 70%);
+}
