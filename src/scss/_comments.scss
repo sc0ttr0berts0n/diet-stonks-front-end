@@ -4,11 +4,14 @@
         font-size: 1.5rem;
     }
     &--entry {
-        font-size: 1.125rem;
         margin: 0.5rem 0;
-        padding: 1rem;
+        padding: 0.75rem 0.75rem;
+
         border-radius: $radius;
         background-color: rgba(0, 0, 0, 0.1);
+        @media screen and (min-width: 500px) {
+            padding: 1rem;
+        }
     }
     &--post-title {
         opacity: 0.4;
@@ -23,10 +26,17 @@
         }
     }
     &--comment {
-        border-left: 4px solid rgba(#ccc, 0.2);
-        padding-left: 1rem;
+        border-left: 2px solid rgba(#ccc, 0.2);
+        padding-left: 0.5rem;
+        font-size: 1rem;
+
         line-height: 1.3;
         overflow-wrap: break-word;
         word-wrap: break-word;
+        @media screen and (min-width: 500px) {
+            font-size: 1.125rem;
+            border-left: 4px solid rgba(#ccc, 0.2);
+            padding-left: 1rem;
+        }
     }
 }
