@@ -36,10 +36,14 @@
         &:hover {
             background-color: rgba(#ff5050, 0.3);
         }
+        &__active {
+            position: sticky;
+            top: 0;
+        }
         &__active:nth-child(n) {
             border: 1px solid #ff5050;
             border-width: 1px 0;
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: #1b1b1b;
         }
         &__active::before {
             content: attr(data-name);
