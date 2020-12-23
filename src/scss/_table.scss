@@ -44,6 +44,9 @@
             border: 1px solid #ff5050;
             border-width: 1px 0;
             background-color: #1b1b1b;
+            @media screen and (min-width: 500px) {
+                border-radius: 0 0 $radius $radius;
+            }
         }
         &__active::before {
             content: attr(data-name);
