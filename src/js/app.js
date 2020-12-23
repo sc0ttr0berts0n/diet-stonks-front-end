@@ -7,6 +7,7 @@ var app = new Vue({
         stocks: [],
         comments: [],
         didScroll: false,
+        toTopEmoji: '🚀',
     },
     beforeMount() {
         this.fetchAPI();
@@ -72,9 +73,15 @@ var app = new Vue({
             const depth = window.scrollY;
             if (depth > 800) {
                 appContainer.classList.add('app__scrolled');
+                this.toTopEmoji = this.getRandomEmoji();
             } else {
                 appContainer.classList.remove('app__scrolled');
+                this.toTopEmoji = this.getRandomEmoji();
             }
+        },
+        getRandomEmoji() {
+            const emojis = ['🚀', '🌚', '💎', '🌈', '🙌🏼', '💪', '🍆'];
+            return emojis[Math.floor(Math.random() * emojis.length)];
         },
     },
     computed: {
@@ -94,10 +101,6 @@ var app = new Vue({
         },
         totalPercent: function () {
             return this.totalEarnings / this.totalCost;
-        },
-        getRandomEmoji: function () {
-            const emojis = ['🚀', '🌚', '💎', '🌈', '🙌🏼', '💪', '🍆'];
-            return emojis[Math.floor(Math.random() * emojis.length)];
         },
     },
 });

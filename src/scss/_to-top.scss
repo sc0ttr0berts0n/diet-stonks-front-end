@@ -13,6 +13,7 @@
         border-radius: 50%;
         transform: translateY(-200%);
         transition: $timing;
+        transition-delay: $timing * 3;
         .app__scrolled & {
             transform: translateY(0);
         }
