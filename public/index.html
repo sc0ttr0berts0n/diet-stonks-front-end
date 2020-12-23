@@ -19,6 +19,7 @@
             <div class="app--loading" v-if="!apiResponse">Loading...<br />This may take up to two minutes.</div>
             <div class="table--container" v-if="stocks">
                 <div class="comments--title" v-if="apiResponse">Diet Stonks as of {{cosmeticTime}}</div>
+                <div class="comments--title" v-if="apiResponse">Cost: ${{totalCost}}, Profit: ${{totalEarnings.toFixed(2)}}, {{(totalPercent * 100).toFixed(2)}}%</div>
                 <div class="table--wrapper" v-if="apiResponse">
                     <div class="table--listing">
                         <div class="table--row table--row__header">
@@ -28,7 +29,8 @@
                             <div class="table--data table--data__snt">SNT</div>
                             <div class="table--data table--data__idx">IDX</div>
                             <div class="table--data table--data__cur">CUR</div>
-                            <div class="table--data table--data__cng">CNG</div>
+                            <div class="table--data table--data__chd">CH$</div>
+                            <div class="table--data table--data__chp">CH%</div>
                         </div>
                     </div>
                     <div class="table--listing" v-for="(stock, index) in stocks" :class="{ 'table--listing__active': stock.isActive }" :data-name="`${stock.name}`">
@@ -39,7 +41,8 @@
                             <div class="table--data table--data__snt" :class="redOrGreen(stock.sentiment)">{{stock.sentiment}}</div>
                             <div class="table--data table--data__idx" :class="redOrGreen(stock.index)">{{stock.index}}</div>
                             <div class="table--data table--data__cur">{{stock.price.current.toFixed(2)}}</div>
-                            <div class="table--data table--data__cng" :class="redOrGreen(stock.price.changePercentage)">{{stock.price.changePercentage.toFixed(2)}}%</div>
+                            <div class="table--data table--data__chd" :class="redOrGreen(stock.price.change)">{{stock.price.change.toFixed(2)}}</div>
+                            <div class="table--data table--data__chp" :class="redOrGreen(stock.price.changePercentage)">{{stock.price.changePercentage.toFixed(2)}}%</div>
                         </div>
                         <div class="table--body" v-if="stock.isActive">
                             <div class="table--body-data"><span class="table--body-data-label">OPEN</span> <span class="table--body-data-value">{{stock.price.open.toFixed(2)}}</span></div>

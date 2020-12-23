@@ -54,5 +54,18 @@ var app = new Vue({
             const time = new Date(this.apiResponse?.raw.unixTimestamp);
             return time.toLocaleTimeString('en-US');
         },
+        totalEarnings: function () {
+            return this.stocks.reduce((acc, stock) => {
+                return acc + stock.price.change;
+            }, 0);
+        },
+        totalCost: function () {
+            return this.stocks.reduce((acc, stock) => {
+                return acc + stock.price.previousClose;
+            }, 0);
+        },
+        totalPercent: function () {
+            return this.totalEarnings / this.totalCost;
+        },
     },
 });
