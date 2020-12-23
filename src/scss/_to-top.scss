@@ -1,0 +1,32 @@
+.to-top {
+    &--wrapper {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        background-color: #ff5050;
+        width: 55px;
+        height: 55px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+        border-radius: 50%;
+        transform: translateY(-200%);
+        transition: $timing;
+        .app__scrolled & {
+            transform: translateY(0);
+        }
+        cursor: pointer;
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 0.75rem;
+            height: 0.75rem;
+            border: 2px solid #ccc;
+            border-width: 2px 2px 0 0;
+            transform: translate(-50%, -0.75rem) rotate(-45deg);
+        }
+    }
+}

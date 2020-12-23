@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
 body {
     color: #ccc;
     background-color: #282828;

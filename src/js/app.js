@@ -6,9 +6,22 @@ var app = new Vue({
         activeStock: '',
         stocks: [],
         comments: [],
+        didScroll: false,
     },
     beforeMount() {
         this.fetchAPI();
+    },
+    created() {
+        window.addEventListener('scroll', this.handleScroll);
+        setInterval(
+            function () {
+                if (this.didScroll) {
+                    this.hasScrolled();
+                    this.didScroll = false;
+                }
+            }.bind(this),
+            250
+        );
     },
     methods: {
         async fetchAPI() {
@@ -48,6 +61,21 @@ var app = new Vue({
         redOrGreen(num) {
             return num > 0 ? 'green' : 'red';
         },
+        goToTopOfPage() {
+            window.scrollTo(0, 0);
+        },
+        handleScroll() {
+            this.didScroll = true;
+        },
+        hasScrolled() {
+            const appContainer = document.body.querySelector('.app--container');
+            const depth = window.scrollY;
+            if (depth > 800) {
+                appContainer.classList.add('app__scrolled');
+            } else {
+                appContainer.classList.remove('app__scrolled');
+            }
+        },
     },
     computed: {
         cosmeticTime: function () {
@@ -66,6 +94,10 @@ var app = new Vue({
         },
         totalPercent: function () {
             return this.totalEarnings / this.totalCost;
+        },
+        getRandomEmoji: function () {
+            const emojis = ['🚀', '🌚', '💎', '🌈', '🙌🏼', '💪', '🍆'];
+            return emojis[Math.floor(Math.random() * emojis.length)];
         },
     },
 });

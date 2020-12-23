@@ -19,7 +19,7 @@
             <div class="app--loading" v-if="!apiResponse">Loading...<br />This may take up to two minutes.</div>
             <div class="table--container" v-if="stocks">
                 <div class="comments--title" v-if="apiResponse">Diet Stonks as of {{cosmeticTime}}</div>
-                <div class="comments--title" v-if="apiResponse">Cost: ${{totalCost}}, Profit: ${{totalEarnings.toFixed(2)}}, {{(totalPercent * 100).toFixed(2)}}%</div>
+                <div class="comments--title" v-if="apiResponse">Cost: ${{totalCost.toFixed(2)}}, Profit: ${{totalEarnings.toFixed(2)}}, {{(totalPercent * 100).toFixed(2)}}%</div>
                 <div class="table--wrapper" v-if="apiResponse">
                     <div class="table--listing">
                         <div class="table--row table--row__header">
@@ -66,6 +66,7 @@
                     </div>
                 </div>
             </div>
+            <div class="to-top--wrapper" @click="goToTopOfPage">{{getRandomEmoji}}</div>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.core.min.js" integrity="sha512-adYefSF5Yqrk6IfUEa40OrIDc2Mgc2tErcS3DAU+WyZqlr/1Kr/FoKcHSNOP9hNHbOQjOgGxga4Yp/sK5w0ZmQ==" crossorigin="anonymous"></script>
