@@ -18,3 +18,13 @@ a {
 .red {
     color: mix(#ff5050, #ccc, 70%);
 }
+
+.detail {
+    &--body {
+        color: #aaaaaa;
+        font-style: italic;
+        font-size: 0.875rem;
+        text-align: right;
+        padding: 0.25rem 0.75rem;
+    }
+}
