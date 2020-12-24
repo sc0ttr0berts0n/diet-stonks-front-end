@@ -17,9 +17,19 @@
     <div id="app" class="app--container">
         <div class="app--wrapper" :class="{ 'app__loading': !apiResponse }">
             <div class="app--loading" v-if="!apiResponse">Loading...<br />This may take up to two minutes.</div>
+
+            <div class="comments--title" v-if="apiResponse">The Stonkulator</div>
+
+            <div class="card--container" v-if="apiResponse">
+                <div class="card--wrapper">
+                    <div class="card--listing" v-for="card in cards">
+                        <div class="card--title">{{card.title}}</div>
+                        <div class="card--body">${{card.cost}}<br />${{card.earnings}} ({{card.percent}})</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="table--container" v-if="stocks">
-                <div class="comments--title" v-if="apiResponse">The Stonkulator</div>
-                <div class="comments--title" v-if="apiResponse">Cost: ${{totalCost.toFixed(2)}}, Profit: ${{totalEarnings.toFixed(2)}}, {{(totalPercent * 100).toFixed(2)}}%</div>
                 <div class="table--wrapper" v-if="apiResponse">
                     <div class="table--listing">
                         <div class="table--row table--row__header">

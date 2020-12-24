@@ -1,0 +1,22 @@
+.card {
+    &--container {
+    }
+    &--wrapper {
+        display: flex;
+        // justify-content: space-between;
+        margin: 0.5rem -0.25rem;
+        flex-wrap: wrap;
+    }
+    &--listing {
+        margin: 0.25rem;
+        border: 1px solid #ff5050;
+        border-radius: $radius;
+        padding: 0.5rem 1rem;
+        flex-basis: calc(800px / 3 - 0.5rem);
+        flex-grow: 1;
+    }
+    &--title {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}

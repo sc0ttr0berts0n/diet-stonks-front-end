@@ -59,7 +59,7 @@ var app = new Vue({
             this.comments = stock.comments;
         },
         redOrGreen(num) {
-            return num > 0 ? 'green' : 'red';
+            return num >= 0 ? 'green' : 'red';
         },
         goToTopOfPage() {
             window.scrollTo(0, 0);
@@ -82,24 +82,57 @@ var app = new Vue({
             const emojis = ['🚀', '🌚', '💎', '🌈', '🙌🏼', '💪', '🍆'];
             return emojis[Math.floor(Math.random() * emojis.length)];
         },
+        calcEarnings(filterFunction = () => true) {
+            return this.stocks.filter(filterFunction).reduce((acc, stock) => {
+                return acc + stock.price.change;
+            }, 0);
+        },
+        calcCost(filterFunction = () => true) {
+            return this.stocks.filter(filterFunction).reduce((acc, stock) => {
+                return acc + stock.price.current;
+            }, 0);
+        },
+        calcPercent(a, b) {
+            return `${((a / b) * 100).toFixed(2)}%`;
+        },
     },
     computed: {
         cosmeticTime: function () {
             const time = new Date(this.apiResponse?.raw.unixTimestamp);
             return time.toLocaleTimeString('en-US');
         },
-        totalEarnings: function () {
-            return this.stocks.reduce((acc, stock) => {
-                return acc + stock.price.change;
-            }, 0);
-        },
-        totalCost: function () {
-            return this.stocks.reduce((acc, stock) => {
-                return acc + stock.price.previousClose;
-            }, 0);
-        },
-        totalPercent: function () {
-            return this.totalEarnings / this.totalCost;
+        cards: function () {
+            const isPos = (el) => el.index >= 0;
+            const isNeg = (el) => el.index < 0;
+            return [
+                {
+                    title: 'All',
+                    cost: this.calcCost().toFixed(2),
+                    earnings: this.calcEarnings().toFixed(2),
+                    percent: this.calcPercent(
+                        this.calcEarnings(),
+                        this.calcCost()
+                    ),
+                },
+                {
+                    title: 'Positive',
+                    cost: this.calcCost(isPos).toFixed(2),
+                    earnings: this.calcEarnings(isPos).toFixed(2),
+                    percent: this.calcPercent(
+                        this.calcEarnings(isPos),
+                        this.calcCost(isPos)
+                    ),
+                },
+                {
+                    title: 'Negative',
+                    cost: this.calcCost(isNeg).toFixed(2),
+                    earnings: this.calcEarnings(isNeg).toFixed(2),
+                    percent: this.calcPercent(
+                        this.calcEarnings(isNeg),
+                        this.calcCost(isNeg)
+                    ),
+                },
+            ];
         },
     },
 });
