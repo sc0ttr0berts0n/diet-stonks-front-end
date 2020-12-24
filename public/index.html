@@ -60,7 +60,7 @@
                     </div>
                     <div class="comments--body">
                         <div class="comments--entry" v-for="comment in comments">
-                            <div class="comments--post-title">From: <a :href="comment.permalink" class="comments--permalink" target="_blank">{{comment.postTitle}}</a></div>
+                            <div class="comments--post-title">Sentiment: <span :class="redOrGreen(comment.sentiment)">{{comment.sentiment}}</span> | From: <a :href="comment.permalink" class="comments--permalink" target="_blank">{{comment.postTitle}}</a></div>
                             <div class="comments--comment">{{comment.comment}}</div>
                         </div>
                     </div>

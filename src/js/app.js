@@ -36,12 +36,12 @@ var app = new Vue({
             // bind comments to stock
             this.stocks = this.stocks.map((stock) => {
                 const symbol = stock.symbol;
-                const rawEntry = data.raw.data.find(
+                const rawEntry = data.comments.filter(
                     (entry) => entry.symbol === symbol
                 );
                 return {
                     ...stock,
-                    comments: rawEntry.comments,
+                    comments: rawEntry,
                     name: rawEntry.name,
                 };
             });
