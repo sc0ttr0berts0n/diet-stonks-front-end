@@ -42,7 +42,6 @@ var app = new Vue({
                 return {
                     ...stock,
                     comments: rawEntry,
-                    name: rawEntry.name,
                 };
             });
         },
