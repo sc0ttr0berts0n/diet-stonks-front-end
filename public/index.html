@@ -22,7 +22,7 @@
 
             <div class="card--container" v-if="apiResponse">
                 <div class="card--wrapper">
-                    <div class="card--listing" v-for="card in cards">
+                    <div class="card--listing" v-for="card in cards" :class="redOrGreen(card.earnings)">
                         <div class="card--title">{{card.title}}</div>
                         <div class="card--body">${{card.cost}}<br />${{card.earnings}} ({{card.percent}})</div>
                     </div>

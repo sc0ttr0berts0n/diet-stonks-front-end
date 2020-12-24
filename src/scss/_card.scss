@@ -12,8 +12,17 @@
         border: 1px solid #ff5050;
         border-radius: $radius;
         padding: 0.5rem 1rem;
-        flex-basis: calc(800px / 3 - 0.5rem);
+        flex-basis: 100px;
         flex-grow: 1;
+        font-size: 0.75rem;
+        &.green {
+            border-color: #50ff50;
+        }
+        @media screen and (min-width: 500px) {
+            flex-basis: 200px;
+            font-size: 1rem;
+            // flex-grow: 0;
+        }
     }
     &--title {
         font-weight: bold;

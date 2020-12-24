@@ -26,7 +26,9 @@ var app = new Vue({
     },
     methods: {
         async fetchAPI() {
-            const res = await fetch('https://diet-stonks.herokuapp.com/api');
+            const res = await fetch(
+                'https://diet-stonks.herokuapp.com/api/v1/wsa'
+            );
             const data = await res.json();
             this.stocks = data.data.map((stock) => {
                 return { ...stock, isActive: false };
@@ -115,7 +117,7 @@ var app = new Vue({
                     ),
                 },
                 {
-                    title: 'Positive',
+                    title: 'Pos IDX',
                     cost: this.calcCost(isPos).toFixed(2),
                     earnings: this.calcEarnings(isPos).toFixed(2),
                     percent: this.calcPercent(
@@ -124,7 +126,7 @@ var app = new Vue({
                     ),
                 },
                 {
-                    title: 'Negative',
+                    title: 'Neg IDX',
                     cost: this.calcCost(isNeg).toFixed(2),
                     earnings: this.calcEarnings(isNeg).toFixed(2),
                     percent: this.calcPercent(
