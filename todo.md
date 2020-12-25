@@ -1,1 +1,2 @@
 -   [ ] cache previous data, server asap.
+-   [ ] show individual sentiment
