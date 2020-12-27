@@ -18,8 +18,10 @@
         <div class="app--wrapper" :class="{ 'app__loading': !apiResponse }">
             <div class="app--loading" v-if="!apiResponse">Loading...<br />This may take up to two minutes.</div>
 
+            <!-- TOPBAR -->
             <div class="comments--title" v-if="apiResponse">The Stonkulator</div>
 
+            <!-- CARDS -->
             <div class="card--container" v-if="apiResponse">
                 <div class="card--wrapper">
                     <div class="card--listing" v-for="card in cards" :class="redOrGreen(card.earnings)">
@@ -29,8 +31,10 @@
                 </div>
             </div>
 
+            <!-- TABLE -->
             <div class="table--container" v-if="stocks">
                 <div class="table--wrapper" v-if="apiResponse">
+                    <!-- TABLE HEADER -->
                     <div class="table--listing">
                         <div class="table--row table--row__header">
                             <div class="table--data table--data__pos">POS</div>
@@ -43,7 +47,10 @@
                             <div class="table--data table--data__chp">CH%</div>
                         </div>
                     </div>
+
+                    <!-- TABLE LISTING LOOP -->
                     <div class="table--listing" v-for="(stock, index) in stocks" :class="{ 'table--listing__active': stock.isActive }" :data-name="`${stock.name}`">
+                        <!-- TABLE COMPACT ROW -->
                         <div class="table--row" @click="handleStockClick(stock)">
                             <div class="table--data table--data__pos">{{index + 1}}</div>
                             <div class="table--data table--data__sym">{{stock.symbol}}</div>
@@ -54,6 +61,7 @@
                             <div class="table--data table--data__chd" :class="redOrGreen(stock.price.change)">{{stock.price.change.toFixed(2)}}</div>
                             <div class="table--data table--data__chp" :class="redOrGreen(stock.price.changePercentage)">{{stock.price.changePercentage.toFixed(2)}}%</div>
                         </div>
+                        <!-- TABLE BODY -->
                         <div class="table--body" v-if="stock.isActive">
                             <div class="table--body-data-wrapper">
                                 <div class="table--body-data"><span class="table--body-data-label">OPEN</span> <span class="table--body-data-value">{{stock.price.open.toFixed(2)}}</span></div>
@@ -84,7 +92,11 @@
                     </div>
                 </div>
             </div>
+
+            <!-- METADATA -->
             <div class="detail--body" v-if="apiResponse">{{apiResponse.release}} @ {{cosmeticTime}}</div>
+
+            <!-- COMMENTS -->
             <div class="comments--container" v-if="comments.length > 0">
                 <div class="comments--wrapper">
                     <div class="comments--header">
@@ -98,6 +110,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- TO TOP BUTTON -->
             <div class="to-top--wrapper" @click="goToTopOfPage">{{toTopEmoji}}</div>
         </div>
     </div>

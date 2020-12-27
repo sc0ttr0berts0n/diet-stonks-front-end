@@ -1,2 +1,7 @@
--   [ ] cache previous data, server asap.
--   [ ] show individual sentiment
+-   [ ] cache previous data, serve asap.
+-   [x] show individual sentiment
+-   [ ] bigger view for larger screens
+-   [ ] settings area with experimental features
+-   [ ] topbar
+-   [ ] source data toggles
+-   [ ] timeframe data toggles

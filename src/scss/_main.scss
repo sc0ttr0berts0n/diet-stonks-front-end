@@ -1,6 +1,11 @@
 html {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    ::selection {
+        background-color: #ff5050;
+        border-radius: 4px;
+        overflow: hidden;
+    }
 }
 body {
     color: #ccc;
