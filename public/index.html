@@ -19,7 +19,9 @@
             <div class="app--loading" v-if="!apiResponse">Loading...<br />This may take up to two minutes.</div>
 
             <!-- TOPBAR -->
-            <div class="comments--title" v-if="apiResponse">The Stonkulator</div>
+            <div class="topbar--container">
+                <div class="topbar--logo">The Stonkulator</div>
+            </div>
 
             <!-- CARDS -->
             <div class="card--container" v-if="apiResponse">
@@ -91,10 +93,10 @@
                         </div>
                     </div>
                 </div>
+                <!-- METADATA -->
+                <div class="table--detail" v-if="apiResponse">{{apiResponse.release}} @ {{cosmeticTime}}</div>
             </div>
 
-            <!-- METADATA -->
-            <div class="detail--body" v-if="apiResponse">{{apiResponse.release}} @ {{cosmeticTime}}</div>
 
             <!-- COMMENTS -->
             <div class="comments--container" v-if="comments.length > 0">

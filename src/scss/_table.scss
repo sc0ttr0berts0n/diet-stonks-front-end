@@ -1,9 +1,17 @@
 .table {
+    &--container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        @include basic-padding;
+    }
     &--wrapper {
         width: calc(100% + 1.5rem);
         border: 1px solid #ff5050;
         border-width: 1px 0 2px;
         margin: 0 -0.75rem;
+        max-width: 1400px;
         @media screen and (min-width: 500px) {
             border-radius: 0 0 $radius $radius;
             border-width: 1px;
@@ -25,6 +33,11 @@
                 .table--data {
                     font-size: 1rem;
                     padding: 0.25rem 0;
+                }
+            }
+            @media screen and (min-width: 1200px) {
+                .table--data {
+                    border-right: 2px solid rgba(#282828, 0.5);
                 }
             }
         }
@@ -74,7 +87,12 @@
         }
         @media screen and (min-width: 800px) {
             padding: 0 1rem;
+            font-size: 1rem;
         }
+        @media screen and (min-width: 1200px) {
+            font-size: 1.25rem;
+        }
+
         &__pos {
             flex-basis: 2rem;
             @media screen and (min-width: 800px) {
@@ -222,14 +240,18 @@
         &__yahoo:hover {
             background-color: #4d00ae;
         }
-        // &:hover {
-        //     background-color: #282828;
-        // }
-        // &__yahoo {
-        //     background-color: #444;
-        //     &:hover {
-        //         background-color: #111111;
-        //     }
-        // }
+    }
+    &--detail {
+        width: 100%;
+        max-width: 1400px;
+        color: #aaaaaa;
+        font-style: italic;
+        font-size: 0.875rem;
+        text-align: right;
+        padding: 0.25rem 0;
+        @media screen and (min-width: 500px) {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
     }
 }

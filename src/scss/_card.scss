@@ -1,11 +1,17 @@
 .card {
     &--container {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        @include basic-padding;
     }
     &--wrapper {
         display: flex;
         // justify-content: space-between;
         margin: 0.5rem -0.25rem;
         flex-wrap: wrap;
+        max-width: 1400px;
+        width: 100%;
     }
     &--listing {
         margin: 0.25rem;
