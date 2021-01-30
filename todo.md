@@ -1,7 +1,8 @@
 -   [ ] cache previous data, serve asap.
 -   [x] show individual sentiment
--   [ ] bigger view for larger screens
+-   [x] bigger view for larger screens
 -   [ ] settings area with experimental features
--   [ ] topbar
+-   [x] topbar
 -   [ ] source data toggles
 -   [ ] timeframe data toggles
+-   [ ] lazy load comments
